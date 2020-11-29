@@ -5,19 +5,18 @@
         <title> This is C A R S </title>
     </head>
     <body>
+        <!--suppress HtmlDeprecatedAttribute -->
         <table border="1">
             <tr>
                 <th> ID </th>
                 <th> Brand </th>
                 <th> Model </th>
             </tr>
-            <th:block>
-                <tr th:each="car : ${cars}" >
-                    <td th:utext="${car.getId()}"> ID </td>
-                    <td th:utext="${car.getBrand()}"> Brand </td>
-                    <td th:utext="${car.getModel()}"> Model </td>
-                </tr >
-            </th:block>
+            <tr th:each="car, stat : ${cars}" th:if="${stat.index < countOfCars}">
+                <td th:utext="${car.getId()}"> ID </td>
+                <td th:utext="${car.getBrand()}"> Brand </td>
+                <td th:utext="${car.getModel()}"> Model </td>
+            </tr >
         </table>
     </body>
 </html>
